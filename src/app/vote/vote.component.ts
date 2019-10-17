@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-vote',
   templateUrl: './vote.component.html',
@@ -9,9 +9,11 @@ export class VoteComponent implements OnInit {
   constructor() { }
 
   totalVotes = 0;
+  voteChanged = new EventEmitter<number>();
 
   upVote() {
     this.totalVotes++;
+    this.voteChanged.emit(this.totalVotes);
   }
 
   downVote() {

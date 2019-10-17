@@ -14,6 +14,18 @@ describe('VoteComponent', () => {
 
   it('should decrement vote counter when downvoted', () => {
     component.downVote();
-    expect(component.totalVotes).toBe(0);
+    expect(component.totalVotes).toBe(-1);
+  });
+
+  it('should emit an even when upvoted', () => {
+    let totalVotes = -1;
+
+    component.voteChanged.subscribe((voteCount) => {
+      totalVotes = voteCount;
+    });
+    component.upVote();
+
+    expect(component.totalVotes).not.toBeNull();
+    expect(component.totalVotes).toBe(1);
   });
 });
