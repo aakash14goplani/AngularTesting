@@ -1,6 +1,6 @@
 import { ServicesComponent } from './services.component';
 import { TodoService } from './todo.service';
-import { from, Observable, EMPTY, throwError } from 'rxjs';
+import { from, EMPTY, throwError } from 'rxjs';
 import { TestBed, async } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
@@ -10,8 +10,9 @@ describe('ServicesComponent', () => {
 
   beforeEach(async( () => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [TodoService]
+      imports: [ HttpClientTestingModule ],
+      declarations: [ ServicesComponent ],
+      providers: [ TodoService ]
     });
   }));
 

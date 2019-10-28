@@ -4,7 +4,8 @@ import { TodoService } from './todo.service';
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
-  styleUrls: ['./services.component.css']
+  styleUrls: ['./services.component.css'],
+  providers: [TodoService]
 })
 export class ServicesComponent implements OnInit {
 
@@ -14,7 +15,7 @@ export class ServicesComponent implements OnInit {
   constructor(private service: TodoService) {}
 
   ngOnInit() {
-    this.service.getTodos().subscribe(t => this.todos = t);
+    this.service.getTodos().subscribe(t => {console.log('subscribe called'); this.todos = t; console.log('length: ', this.todos.length); });
   }
 
   add() {
